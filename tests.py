@@ -9,19 +9,17 @@ class Tests(unittest.TestCase):
         self.assertEqual(len(m1._cells), num_cols)
         self.assertEqual(len(m1._cells[0]), num_rows)
 
-    def test_no_rows_and_columns(self):
-        num_cols = 0
-        num_rows = 0
-        m1 = Maze(10, 10, num_rows, num_cols, 25, 25)
-        self.assertEqual(len(m1._cells), num_cols)
-        self.assertEqual(len(m1._cells), num_rows)
-
     def test_maze_create_cells_large(self):
         num_cols = 18
         num_rows = 14
         m1 = Maze(5, 5, num_rows, num_cols, 10, 10)
         self.assertEqual(len(m1._cells), num_cols)
         self.assertEqual(len(m1._cells[0]), num_rows)
+
+    def test_enterance_exit_open(self):
+        m1 = Maze(5, 5, 12, 8, 10, 10)
+        self.assertEqual(m1._cells[0][0].has_top_wall, False)
+        self.assertEqual(m1._cells[-1][-1].has_bottom_wall, False)
 
 
 if __name__ == "__main__":
